@@ -10,5 +10,6 @@
   {% for curso in cursos %}
     <a href="details/{{ curso.id }}"><p>{{ curso.nome }}</p></a>
   {% endfor %}
+  <button onclick="location.href = 'add-course'">Adicionar curso</button>
 </body>
 </html>

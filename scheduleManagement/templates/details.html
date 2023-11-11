@@ -12,6 +12,7 @@
   {% for disciplina in curso.disciplinas.all.values %}
     <a href="/disciplina/{{ disciplina.id }}"><p>{{ disciplina.nome }}</p></a>
   {% endfor %}
+  <button onclick="location.href = '/edit-course/{{ curso.id }}'" >Editar</button>
   <button onclick="history.back()">Voltar</button>
 </body>
 </html>
