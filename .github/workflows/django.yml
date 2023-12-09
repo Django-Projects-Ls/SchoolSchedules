@@ -1,0 +1,24 @@
+name: Django CI # Title of the GitHub Action
+
+on: [push, pull_request] # Events that trigger the workflow in all branches
+
+jobs: # The job contains process, and this process contains steps
+  build: # A process called build
+    runs-on: ubuntu-latest # The type of machine to run the job on
+
+    steps: # Steps that the job will execute
+    - uses: actions/checkout@v3 # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
+    - name: Set up Python 3.12.0 # Name of the step
+      uses: actions/setup-python@v3 # Install Python 3.12.0
+      with:
+        python-version: 3.12.0 # Version of Python to install
+
+    - name: Install Dependencies # Name of the step
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run Tests
+      run: |
+        python manage.py test
