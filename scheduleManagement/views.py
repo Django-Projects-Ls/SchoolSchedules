@@ -1,11 +1,12 @@
 from django.views import View
-from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import Curso, Disciplina
 from .forms import CursoForm
 
 class MainRequestHandler(View):
   def get(self, request):
-    return render(request, 'index.html', {'cursos': get_list_or_404(Curso)})
+    return render(request, 'index.html', {'cursos': Curso.objects.all()})
 
 class DetailsRequestHandler(View):
   def get(self, request, curso_id):
@@ -24,19 +25,19 @@ class CourseAddRequestHandler(View):
     
     if form.is_valid():
       form.save()
-      return redirect('/')
+      return redirect(reverse('home'))
     
     return render(request, 'course.html', {'form': form})
   
 class CourseEditRquestHandler(View):
   def get(self, request, curso_id):
-    return render(request, 'course.html', {'form': CursoForm(instance=Curso.objects.get(id=curso_id))})
+    return render(request, 'course.html', {'form': CursoForm(instance=get_object_or_404(Curso, id=curso_id))})
   
   def post(self, request, curso_id):
-    form = CursoForm(request.POST, instance=Curso.objects.get(id=curso_id))
+    form = CursoForm(request.POST, instance=get_object_or_404(Curso, id=curso_id))
 
     if form.is_valid():
       form.save()
-      return redirect('/')
+      return redirect(reverse('home'))
     
     return render(request, 'course.html', {'form': form})
