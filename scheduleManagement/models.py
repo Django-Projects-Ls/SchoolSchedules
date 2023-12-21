@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Horario(models.Model):
   dia = models.DateField()
   horarioInicio = models.TimeField()
@@ -25,4 +24,3 @@ class Curso(models.Model):
   
   def __str__(self):
     return self.nome
-  
