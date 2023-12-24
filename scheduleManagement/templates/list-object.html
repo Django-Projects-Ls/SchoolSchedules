@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ object_type | capfirst }} | List</title>
+</head>
+<body>
+  <h1>{{ object_type | capfirst }} | List</h1>
+  {% for object in objects %}
+    <a href="{{ object.id }}"><p>{{ object }}</p></a>
+  {% endfor %}
+  <button onclick="location.href = 'create'">Adicionar {{ object_type }}</button>
+  <a href="/">Back</a>
+</body>
+</html>

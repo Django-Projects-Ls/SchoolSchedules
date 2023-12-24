@@ -2,11 +2,11 @@ from django.db import models
 
 class Horario(models.Model):
   dia = models.DateField()
-  horarioInicio = models.TimeField()
-  horarioTermino = models.TimeField()
+  hora_inicio = models.TimeField()
+  hora_fim = models.TimeField()
   
   def __str__(self):
-    return f'{self.dia} | {self.horarioInicio} - {self.horarioTermino}'
+    return f'{self.dia} | {self.hora_inicio} - {self.hora_fim}'
 
 class Disciplina(models.Model):
   nome = models.CharField(max_length=255)

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ object_type | capfirst }} | Update</title>
+</head>
+<body>
+  {% if object_type %}
+    <h1>{{ object_type | capfirst }} | Update</h1>
+  {% else %}
+    <h1>Create</h1>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+  </form>
+  <a href="{{request.META.HTTP_REFERER}}">Back</a>
+</body>
+</html>
