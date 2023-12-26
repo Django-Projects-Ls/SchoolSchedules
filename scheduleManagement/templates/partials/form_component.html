@@ -1,0 +1,9 @@
+<form method="post">
+  {% csrf_token %}
+
+  {% if not delete %}
+    {{ form.as_p }}  
+  {% endif %}
+
+  <input type="submit" value="{{ value }}">
+</form>

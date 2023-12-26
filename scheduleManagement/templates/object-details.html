@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ object_type | capfirst }} | Details</title>
-</head>
-<body>
-  <h1> {{ object_type | capfirst }} | Details</h1>
+{% extends 'home.html' %}
+
+{% block title %} <title>{{ object_type | title }} | Details</title> {% endblock %}
+
+{% block content %}
+  <h1> {{ object_type | title }} | Details</h1>
   
   {% for field, value in object.items %}
     <ul>
@@ -19,5 +16,4 @@
   <button onclick="location.href = 'edit/{{ object.slug }}'" >Update</button>
   <button onclick="location.href = 'delete/{{ object.slug }}'" >Delete</button>
   <a href="/list-{{ object_type }}s">Back</a>
-</body>
-</html>
+{% endblock %}
