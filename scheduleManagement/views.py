@@ -59,7 +59,7 @@ class DisciplineListRequestHandler(ListView):
 
 class DisciplineCreateRequestHandler(CreateView):
   model = Disciplina
-  fields = ['nome', 'codigo']
+  fields = ['nome', 'codigo', 'horario']
   template_name = 'form.html'
   success_url = reverse_lazy('list_disciplines')
 

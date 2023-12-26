@@ -7,14 +7,17 @@
 </head>
 <body>
   <h1> {{ object_type | capfirst }} | Details</h1>
+  
   {% for field, value in object.items %}
     <ul>
-      <li>{{ field }}: {{ value }}</li>
+      {% if field != 'slug' %}
+        <li>{{ field }}: {{ value }}</li>
+      {% endif %}
     </ul>
   {% endfor %}
   
-  <button onclick="location.href = 'edit/{{ object.id }}'" >Update</button>
-  <button onclick="location.href = 'delete/{{ object.id }}'" >Delete</button>
+  <button onclick="location.href = 'edit/{{ object.slug }}'" >Update</button>
+  <button onclick="location.href = 'delete/{{ object.slug }}'" >Delete</button>
   <a href="/list-{{ object_type }}s">Back</a>
 </body>
 </html>

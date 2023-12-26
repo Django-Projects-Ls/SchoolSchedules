@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ object_type | capfirst }} | Update</title>
+  <title>{% if object_type %} {{ object_type | capfirst }} | Update {% else %} Create {% endif %}</title>
 </head>
 <body>
   {% if object_type %}
