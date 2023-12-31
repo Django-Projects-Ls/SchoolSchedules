@@ -1,4 +1,7 @@
+from .home import HomeRequestHandler  # noqa: F401
+
 from .create import (
+    UserCreateRequestHandler,  # noqa: F401
     CourseCreateRequestHandler,  # noqa: F401
     DisciplineCreateRequestHandler,  # noqa: F401
     ScheduleCreateRequestHandler,  # noqa: F401

@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import DetailView
 
 from ..models import Curso, Disciplina, Horario
 from ..extras import get_field_values
 
 
-class CourseDetailsRequestHandler(DetailView):
+class CourseDetailsRequestHandler(LoginRequiredMixin, DetailView):
     model = Curso
     template_name = "object-details.html"
 
@@ -15,7 +16,7 @@ class CourseDetailsRequestHandler(DetailView):
         return context
 
 
-class DisciplineDetailsRequestHandler(DetailView):
+class DisciplineDetailsRequestHandler(LoginRequiredMixin, DetailView):
     model = Disciplina
     template_name = "object-details.html"
 
@@ -26,7 +27,7 @@ class DisciplineDetailsRequestHandler(DetailView):
         return context
 
 
-class ScheduleDetailsRequestHandler(DetailView):
+class ScheduleDetailsRequestHandler(LoginRequiredMixin, DetailView):
     model = Horario
     template_name = "object-details.html"
 
