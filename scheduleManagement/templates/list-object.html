@@ -7,8 +7,11 @@
   
   {% for object in objects %}
     <a href="{{ object.get_absolute_url }}"><p>{{ object }}</p></a>
+
+    {% empty %}
+    <p>No {{ object_type | title }} yet</p>
   {% endfor %}
-  
+   
   <button onclick="location.href = 'create'">Adicionar {{ object_type }}</button>
   <a href="/">Back</a>
 {% endblock %}

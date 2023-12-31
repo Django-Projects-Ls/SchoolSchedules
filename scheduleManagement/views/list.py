@@ -1,10 +1,11 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView
 from django.shortcuts import render
 
 from ..models import Curso, Disciplina, Horario
 
 
-class CourseListRequestHandler(ListView):
+class CourseListRequestHandler(LoginRequiredMixin, ListView):
     model = Curso
 
     def get(self, request):
@@ -15,7 +16,7 @@ class CourseListRequestHandler(ListView):
         )
 
 
-class DisciplineListRequestHandler(ListView):
+class DisciplineListRequestHandler(LoginRequiredMixin, ListView):
     model = Curso
 
     def get(self, request):
@@ -26,7 +27,7 @@ class DisciplineListRequestHandler(ListView):
         )
     
 
-class ScheduleListRequestHandler(ListView):
+class ScheduleListRequestHandler(LoginRequiredMixin, ListView):
     model = Horario
 
     def get(self, request):
