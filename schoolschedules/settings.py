@@ -14,6 +14,8 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
+from django.urls import reverse_lazy
+
 load_dotenv() # load environment variables from .env file
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -120,3 +122,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = reverse_lazy('login') # redirect to login page if user is not logged in
+LOGIN_REDIRECT_URL = reverse_lazy('home') # redirect to home page after login
+LOGOUT_REDIRECT_URL = reverse_lazy('login') # redirect to login page after logout

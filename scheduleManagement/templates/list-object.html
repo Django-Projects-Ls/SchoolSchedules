@@ -1,9 +1,9 @@
 {% extends 'home.html' %}
 
-{% block title %} <title>{{ object_type | title }} | List</title> {% endblock %}
+{% block title %} <title>{{ object_type|title }} | List</title> {% endblock %}
 
 {% block content %}
-  <h1>{{ object_type | title }} | List</h1>
+  <h1>{{ object_type|title }} | List</h1>
   
   {% for object in objects %}
     <a href="{{ object.get_absolute_url }}"><p>{{ object }}</p></a>
@@ -12,6 +12,9 @@
     <p>No {{ object_type | title }} yet</p>
   {% endfor %}
    
-  <button onclick="location.href = 'create'">Adicionar {{ object_type }}</button>
+  {% if perms.scheduleManagement.can_add_curso %}
+    <button onclick="location.href = 'create'">Adicionar {{ object_type }}</button>
+  {% endif %}
+
   <a href="/">Back</a>
 {% endblock %}
