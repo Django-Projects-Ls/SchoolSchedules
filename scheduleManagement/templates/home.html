@@ -6,6 +6,16 @@
   {% block title %} <title>Home page</title> {% endblock %}
 </head>
 <body>
+  {% block navbar %}
+    <nav>
+      <ul>
+        <li><a href="">Schools Schedules</a></li>
+        <li><a href="">{{ user.username }}</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </nav>
+  {% endblock %}
+
   {% block content%}
     <a href="list-courses"><p>Courses</p></a>
     <a href="list-disciplines"><p>Disciplines</p></a>

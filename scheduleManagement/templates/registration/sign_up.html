@@ -1,0 +1,15 @@
+{% extends 'home.html' %}
+
+{% block navbar %} {% endblock %}
+
+{% block title %} <title> Sign Up Page </title> {% endblock %}
+
+{% block content %}
+    <h1>Sign Up Page</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p> Have an account? Login <a href="/login">here</a>!</p>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}
