@@ -32,6 +32,22 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
+# Site ID
+
+SITE_ID = 2
+
+SOCIAL_ACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -42,6 +58,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'scheduleManagement',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +73,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',  # enable allauth
 ]
 
 ROOT_URLCONF = 'schoolschedules.urls'
@@ -123,6 +145,16 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Authentication backends
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# Redirect URLs constants
+
 LOGIN_URL = reverse_lazy('login') # redirect to login page if user is not logged in
 LOGIN_REDIRECT_URL = reverse_lazy('home') # redirect to home page after login
 LOGOUT_REDIRECT_URL = reverse_lazy('login') # redirect to login page after logout
+

@@ -1,5 +1,7 @@
 {% extends 'home.html' %}
 
+{% load socialaccount %}
+
 {% block navbar %} {% endblock %}
 
 {% block title %} <title> Login Page </title> {% endblock %}
@@ -12,4 +14,5 @@
         <p> Don't have any account? Create one <a href="/sign-up">here</a>!</p>
         <button type="submit">Login</button>
     </form>
+    <a href="{% provider_login_url 'google' %}?next=/">Login with google</a>
 {% endblock %}
