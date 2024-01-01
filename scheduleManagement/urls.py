@@ -13,7 +13,7 @@ urlpatterns = [
         name="create_course",
     ),
     path(
-        "list-courses/<slug:slug>",
+        "list-courses/detail/<slug:slug>",
         views.CourseDetailsRequestHandler.as_view(),
         name="detail_course",
     ),
@@ -38,7 +38,7 @@ urlpatterns = [
         name="create_discipline",
     ),
     path(
-        "list-disciplines/<slug:slug>",
+        "list-disciplines/detail/<slug:slug>",
         views.DisciplineDetailsRequestHandler.as_view(),
         name="detail_discipline",
     ),
@@ -63,7 +63,7 @@ urlpatterns = [
         name="create_schedule",
     ),
     path(
-        "list-schedules/<slug:slug>",
+        "list-schedules/detail/<slug:slug>",
         views.ScheduleDetailsRequestHandler.as_view(),
         name="detail_schedule",
     ),
