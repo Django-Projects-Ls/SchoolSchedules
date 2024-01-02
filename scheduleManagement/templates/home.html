@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {% block title %} <title>Home page</title> {% endblock %}
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %} <title>Home page</title> {% endblock %}
+  </head>
+  <body>
   {% block navbar %}
     <nav>
       <ul>
         <li><a href="">Schools Schedules</a></li>
         <li><a href="">{{ user.username }}</a></li>
-        <li><a href="/logout">Logout</a></li>
+        <li><a href="/accounts/logout">Logout</a></li>
       </ul>
     </nav>
   {% endblock %}

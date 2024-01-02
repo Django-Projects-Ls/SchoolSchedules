@@ -10,11 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-import os
-from pathlib import Path
-from dotenv import load_dotenv
-
 from django.urls import reverse_lazy
+from dotenv import load_dotenv
+from pathlib import Path
+
+import os
 
 load_dotenv() # load environment variables from .env file
 
@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ['*']
 # Site ID
 
 SITE_ID = 2
+
+# Social Account Configuration
 
 SOCIAL_ACCOUNT_PROVIDERS = {
     'google': {
@@ -57,8 +59,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'scheduleManagement',
     'django.contrib.sites',
+    'scheduleManagement',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -73,7 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'allauth.account.middleware.AccountMiddleware',  # enable allauth
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'schoolschedules.urls'
@@ -145,16 +147,21 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Authentication backends
+# Authentication Configuration
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 # Redirect URLs constants
 
-LOGIN_URL = reverse_lazy('login') # redirect to login page if user is not logged in
-LOGIN_REDIRECT_URL = reverse_lazy('home') # redirect to home page after login
-LOGOUT_REDIRECT_URL = reverse_lazy('login') # redirect to login page after logout
+LOGIN_REDIRECT_URL = "/" # redirect to home page after login
+LOGOUT_REDIRECT_URL = "/" # redirect to login page after logout
 
