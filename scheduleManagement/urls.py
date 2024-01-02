@@ -3,7 +3,6 @@ from . import views
 
 urlpatterns = [
     path("", views.HomeRequestHandler.as_view(), name="home"),
-    path("sign-up/", views.UserCreateRequestHandler.as_view(), name="sign_up"),
     path(
         "list-courses/", views.CourseListRequestHandler.as_view(), name="list_courses"
     ),
