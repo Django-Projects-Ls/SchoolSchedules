@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logout</title>
-</head>
-<body>
+{% extends 'account/login.html' %}
+
+{% block title %} <title>Logout</title> {% endblock %}
+
+{% block content %}
     <h1>Logout</h1>
     <p>Are you sure that you want to logout of <strong>{{ user.username }}</strong></p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Continue</button>
-    </form>
-</body>
-</html>
+
+    {% include "partials/form_component.html" with value="Continue" %}
+{% endblock %}

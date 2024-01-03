@@ -1,17 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign in via google</title>
-</head>
-<body>
+{% extends 'account/login.html' %}
+
+{% block title %} <title>Sign in via google</title> {% endblock %}
+
+{% block content %}
     <h1>Sign via google</h1>
-    <p>You area about to sign with a third-party environment</p>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Continue</button>
-    </form>
-</body>
-</html>
+    <p>You are about to sign with a third-party environment</p>
+    
+    {% include "partials/form_component.html" with value="Continue" %}
+{% endblock %}

@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from django.urls import reverse_lazy
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -164,4 +163,3 @@ AUTHENTICATION_BACKENDS = (
 
 LOGIN_REDIRECT_URL = "/" # redirect to home page after login
 LOGOUT_REDIRECT_URL = "/" # redirect to login page after logout
-
