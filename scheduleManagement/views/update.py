@@ -1,7 +1,24 @@
+from typing import Any
 from django.views.generic.edit import UpdateView
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 
 from ..models import Curso, Disciplina, Horario
+
+
+class UserUpdateRequestHandler(UpdateView):
+    model = User
+    fields = ['username', 'email']
+    template_name = 'form.html'
+
+    def get_success_url(self) -> str:
+        return reverse_lazy('profile')
+
+    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+        context = super().get_context_data(**kwargs)
+        context['object_type'] = 'user'
+        return context
+
 
 class CourseUpdateRequestHandler(UpdateView):
     model = Curso

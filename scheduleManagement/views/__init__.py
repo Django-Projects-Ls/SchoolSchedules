@@ -1,4 +1,4 @@
-from .home import HomeRequestHandler  # noqa: F401
+from .templates import HomeRequestHandler, UserRequestHandler  # noqa: F401
 
 from .create import (
     UserCreateRequestHandler,  # noqa: F401
@@ -14,13 +14,14 @@ from .list import (
 )
 
 from .update import (
+    UserUpdateRequestHandler,  # noqa: F401
     CourseUpdateRequestHandler,  # noqa: F401
     DisciplineUpdateRequestHandler,  # noqa: F401
     ScheduleUpdateRequestHandler,  # noqa: F401
 )
 
 from .details import (
-    CourseDetailsRequestHandler,   # noqa: F401
+    CourseDetailsRequestHandler,  # noqa: F401
     DisciplineDetailsRequestHandler,  # noqa: F401
     ScheduleDetailsRequestHandler,  # noqa: F401
 )
