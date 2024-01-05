@@ -21,3 +21,6 @@ jobs: # The job contains process, and this process contains steps
 
     - name: Testing Secret KEY
       run: echo "Secret Key is ${{ secrets.TEST }}"
+
+    - name: Testing Variables
+      run: echo "Variable is $VAR"
