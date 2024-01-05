@@ -3,6 +3,12 @@ from . import views
 
 urlpatterns = [
     path("", views.HomeRequestHandler.as_view(), name="home"),
+    path("accounts/profile/", views.UserRequestHandler.as_view(), name="profile"),
+    path(
+        "accounts/profile/edit/<int:pk>",
+        views.UserUpdateRequestHandler.as_view(),
+        name="edit_profile",
+    ),
     path(
         "list-courses/", views.CourseListRequestHandler.as_view(), name="list_courses"
     ),
