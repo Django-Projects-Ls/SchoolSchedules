@@ -150,6 +150,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 ACCOUNT_EMAIL_REQUIRED = True
 
+ACCOUNT_CHANGE_EMAIL = True
+
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 
 AUTHENTICATION_BACKENDS = (
@@ -158,3 +160,5 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
+
+ACCOUNT_EMAIL_VERIFICATION = 'none'
