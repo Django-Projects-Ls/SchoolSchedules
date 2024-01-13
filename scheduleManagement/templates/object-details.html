@@ -13,7 +13,10 @@
     </ul>
   {% endfor %}
   
-  <button onclick="location.href = 'edit/{{ object.slug }}'" >Update</button>
-  <button onclick="location.href = 'delete/{{ object.slug }}'" >Delete</button>
+  {% if perms.scheduleManagement.can_add_curso %}
+    <button onclick="location.href = 'edit/{{ object.slug }}'" >Update</button>
+    <button onclick="location.href = 'delete/{{ object.slug }}'" >Delete</button>
+  {% endif %}
+
   <a href="/list-{{ object_type }}s">Back</a>
 {% endblock %}
