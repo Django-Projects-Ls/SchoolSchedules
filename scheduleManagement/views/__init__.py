@@ -27,6 +27,7 @@ from .details import (
 )
 
 from .delete import (
+    UserDeleteRequestHandler,  # noqa: F401
     CourseDeleteRequestHandler,  # noqa: F401
     DisciplineDeleteRequestHandler,  # noqa: F401
     ScheduleDeleteRequestHandler,  # noqa: F401

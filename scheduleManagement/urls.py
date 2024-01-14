@@ -10,6 +10,11 @@ urlpatterns = [
         name="edit_profile",
     ),
     path(
+        "accounts/profile/delete/<int:pk>",
+        views.UserDeleteRequestHandler.as_view(),
+        name="delete_profile",
+    ),
+    path(
         "list-courses/", views.CourseListRequestHandler.as_view(), name="list_courses"
     ),
     path(
