@@ -1,4 +1,4 @@
-from typing import Any
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import UpdateView
 from django.contrib.auth.models import User
 from django.urls import reverse_lazy
@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from ..models import Curso, Disciplina, Horario
 
 
-class UserUpdateRequestHandler(UpdateView):
+class UserUpdateRequestHandler(LoginRequiredMixin, UpdateView):
     model = User
     fields = ['username', 'email']
     template_name = 'form.html'
@@ -14,13 +14,13 @@ class UserUpdateRequestHandler(UpdateView):
     def get_success_url(self) -> str:
         return reverse_lazy('profile')
 
-    def get_context_data(self, **kwargs: Any) -> dict[str, Any]:
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['object_type'] = 'user'
         return context
 
 
-class CourseUpdateRequestHandler(UpdateView):
+class CourseUpdateRequestHandler(LoginRequiredMixin, UpdateView):
     model = Curso
     fields = ["nome", "codigo", "disciplinas", "horario"]
     template_name = "form.html"
@@ -34,7 +34,7 @@ class CourseUpdateRequestHandler(UpdateView):
         return context
 
 
-class DisciplineUpdateRequestHandler(UpdateView):
+class DisciplineUpdateRequestHandler(LoginRequiredMixin, UpdateView):
     model = Disciplina
     fields = ["nome", "codigo"]
     template_name = "form.html"
@@ -48,7 +48,7 @@ class DisciplineUpdateRequestHandler(UpdateView):
         return context
 
 
-class ScheduleUpdateRequestHandler(UpdateView):
+class ScheduleUpdateRequestHandler(LoginRequiredMixin, UpdateView):
     model = Horario
     fields = ["dia", "hora_inicio", "hora_fim"]
     template_name = "form.html"
